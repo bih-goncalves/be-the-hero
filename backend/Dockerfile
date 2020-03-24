@@ -8,6 +8,5 @@ RUN npm install
 # Copy app
 COPY . .
 
-EXPOSE 8080
 # start it
 CMD [ "node", "index.js" ]

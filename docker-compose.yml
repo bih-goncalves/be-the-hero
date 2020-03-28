@@ -1,5 +1,9 @@
 version: '3.2'
 
+networks:
+  bubble:
+    external: true
+
 services:
   db.backend.dev:
     container_name: db.backend.dev
@@ -12,6 +16,8 @@ services:
       MYSQL_DATABASE: backend
     ports:
       - '3306:3306'
+    networks:
+      - bubble
 
   api.backend.dev:
     container_name: api.backend.dev
@@ -24,6 +30,21 @@ services:
       - node_modules-backend:/usr/src/app/node_modules
     ports:
       - '3333:3333'
+    networks:
+      - bubble
+
+  api.frontend.dev:
+    container_name: api.frontend.dev
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    volumes:
+      - ./frontend:/app
+      - node_modules-frontend:/app/node_modules
+    ports:
+      - '3000:3000'
+    networks:
+      - bubble
 
 volumes:
   mysql_dev:

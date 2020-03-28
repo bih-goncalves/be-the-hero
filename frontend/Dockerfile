@@ -13,5 +13,4 @@ COPY . .
 #Your app binds to port 3000 so you’ll use the EXPOSE instruction to have it mapped by the docker daemon:
 RUN npm run build
 
-CMD ["npm", "start"]
-
+CMD ["tail", "-f", "/dev/null"]

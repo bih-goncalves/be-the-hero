@@ -39,5 +39,13 @@ routes.post('/incidents', IncidentController.create);
 routes.delete('/incidents/:id', IncidentController.delete);
 
 // for incidents in ong space
-routes.get('/profile', ProfileController.index);
+routes.get(
+  '/profile',
+  celebrate({
+    [Segments.HEADERS]: Joi.object({
+      authorization: Joi.string().required(),
+    }).unknown(),
+  }),
+  ProfileController.index,
+);
 module.exports = routes;

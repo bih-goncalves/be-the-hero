@@ -53,6 +53,14 @@ export default StyleSheet.create({
     justifyContent: 'space-between',
   },
 
+  leftTop: {
+    width: '65%',
+  },
+
+  rightTop: {
+    width: '30%',
+  },
+
   incidentProperty: {
     fontSize: 14,
     color: '#41414d',
